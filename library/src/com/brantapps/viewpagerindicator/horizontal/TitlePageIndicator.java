@@ -15,7 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.viewpagerindicator;
+package com.brantapps.viewpagerindicator.horizontal;
+
+import java.util.ArrayList;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -36,7 +38,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-import java.util.ArrayList;
+import com.brantapps.viewpagerindicator.R;
+
 
 /**
  * A TitlePageIndicator is a PageIndicator which displays the title of left view
@@ -156,6 +159,7 @@ public class TitlePageIndicator extends View implements PageIndicator {
         this(context, attrs, R.attr.vpiTitlePageIndicatorStyle);
     }
 
+    @SuppressWarnings("deprecation")
     public TitlePageIndicator(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         if (isInEditMode()) return;
@@ -538,6 +542,8 @@ public class TitlePageIndicator extends View implements PageIndicator {
                 canvas.drawPath(mPath, mPaintFooterIndicator);
                 mPaintFooterIndicator.setAlpha(0xFF);
                 break;
+          default:
+            break;
         }
     }
 
@@ -846,7 +852,6 @@ public class TitlePageIndicator extends View implements PageIndicator {
             dest.writeInt(currentPage);
         }
 
-        @SuppressWarnings("UnusedDeclaration")
         public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
             @Override
             public SavedState createFromParcel(Parcel in) {

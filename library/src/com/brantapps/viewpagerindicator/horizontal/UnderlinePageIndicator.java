@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.viewpagerindicator;
+package com.brantapps.viewpagerindicator.horizontal;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -30,6 +30,9 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
+
+import com.brantapps.viewpagerindicator.R;
+
 
 /**
  * Draws a line for each page. The current page line is colored differently
@@ -78,6 +81,7 @@ public class UnderlinePageIndicator extends View implements PageIndicator {
         this(context, attrs, R.attr.vpiUnderlinePageIndicatorStyle);
     }
 
+    @SuppressWarnings("deprecation")
     public UnderlinePageIndicator(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         if (isInEditMode()) return;
@@ -386,7 +390,6 @@ public class UnderlinePageIndicator extends View implements PageIndicator {
             dest.writeInt(currentPage);
         }
 
-        @SuppressWarnings("UnusedDeclaration")
         public static final Creator<SavedState> CREATOR = new Creator<SavedState>() {
             @Override
             public SavedState createFromParcel(Parcel in) {

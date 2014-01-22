@@ -13,7 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.viewpagerindicator;
+package com.brantapps.viewpagerindicator.vertical;
+
+import com.brantapps.viewpagerindicator.R;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -25,12 +27,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewConfigurationCompat;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.FloatMath;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
+
 
 /**
  * Draws a line for each page. The current page line is colored differently
@@ -41,8 +43,8 @@ public class LinePageIndicator extends View implements PageIndicator {
 
     private final Paint mPaintUnselected = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint mPaintSelected = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private ViewPager mViewPager;
-    private ViewPager.OnPageChangeListener mListener;
+    private VerticalViewPager mViewPager;
+    private VerticalViewPager.OnPageChangeListener mListener;
     private int mCurrentPage;
     private boolean mCentered;
     private float mLineWidth;
@@ -62,6 +64,7 @@ public class LinePageIndicator extends View implements PageIndicator {
         this(context, attrs, R.attr.vpiLinePageIndicatorStyle);
     }
 
+    @SuppressWarnings("deprecation")
     public LinePageIndicator(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         if (isInEditMode()) return;
@@ -274,7 +277,7 @@ public class LinePageIndicator extends View implements PageIndicator {
     }
 
     @Override
-    public void setViewPager(ViewPager viewPager) {
+    public void setViewPager(VerticalViewPager viewPager) {
         if (mViewPager == viewPager) {
             return;
         }
@@ -291,7 +294,7 @@ public class LinePageIndicator extends View implements PageIndicator {
     }
 
     @Override
-    public void setViewPager(ViewPager view, int initialPosition) {
+    public void setViewPager(VerticalViewPager view, int initialPosition) {
         setViewPager(view);
         setCurrentItem(initialPosition);
     }
@@ -336,7 +339,7 @@ public class LinePageIndicator extends View implements PageIndicator {
     }
 
     @Override
-    public void setOnPageChangeListener(ViewPager.OnPageChangeListener listener) {
+    public void setOnPageChangeListener(VerticalViewPager.OnPageChangeListener listener) {
         mListener = listener;
     }
 
@@ -432,7 +435,6 @@ public class LinePageIndicator extends View implements PageIndicator {
             dest.writeInt(currentPage);
         }
 
-        @SuppressWarnings("UnusedDeclaration")
         public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
             @Override
             public SavedState createFromParcel(Parcel in) {

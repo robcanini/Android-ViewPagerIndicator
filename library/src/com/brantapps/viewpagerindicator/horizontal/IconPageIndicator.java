@@ -14,20 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.viewpagerindicator;
+package com.brantapps.viewpagerindicator.horizontal;
 
+import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 
-import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+import com.brantapps.viewpagerindicator.R;
+
 
 /**
  * This widget implements the dynamic action bar tab behavior that can change
@@ -37,7 +38,7 @@ public class IconPageIndicator extends HorizontalScrollView implements PageIndic
     private final IcsLinearLayout mIconsLayout;
 
     private ViewPager mViewPager;
-    private OnPageChangeListener mListener;
+    private ViewPager.OnPageChangeListener mListener;
     private Runnable mIconSelector;
     private int mSelectedIndex;
 
@@ -45,6 +46,7 @@ public class IconPageIndicator extends HorizontalScrollView implements PageIndic
         this(context, null);
     }
 
+    @SuppressWarnings("deprecation")
     public IconPageIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
         setHorizontalScrollBarEnabled(false);
@@ -166,7 +168,7 @@ public class IconPageIndicator extends HorizontalScrollView implements PageIndic
     }
 
     @Override
-    public void setOnPageChangeListener(OnPageChangeListener listener) {
+    public void setOnPageChangeListener(ViewPager.OnPageChangeListener listener) {
         mListener = listener;
     }
 }

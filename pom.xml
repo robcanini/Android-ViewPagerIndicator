@@ -9,7 +9,7 @@
         <version>7</version>
     </parent>
 
-    <groupId>com.viewpagerindicator</groupId>
+    <groupId>com.brantapps.viewpagerindicator</groupId>
     <artifactId>parent</artifactId>
     <packaging>pom</packaging>
     <version>2.4.1</version>
@@ -70,7 +70,7 @@
         <android.platform>16</android.platform>
         <android.support.version>r7</android.support.version>
 
-        <android-maven.version>3.3.0</android-maven.version>
+        <android-maven.version>3.6.0</android-maven.version>
     </properties>
 
     <dependencyManagement>

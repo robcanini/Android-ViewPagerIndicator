@@ -1,4 +1,4 @@
-package com.viewpagerindicator;
+package com.brantapps.viewpagerindicator.horizontal;
 
 public interface IconPagerAdapter {
     /**

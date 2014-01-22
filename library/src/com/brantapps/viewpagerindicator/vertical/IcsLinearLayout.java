@@ -1,4 +1,4 @@
-package com.viewpagerindicator;
+package com.brantapps.viewpagerindicator.vertical;
 
 import android.content.Context;
 import android.content.res.TypedArray;

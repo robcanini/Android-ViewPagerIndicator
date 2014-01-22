@@ -14,7 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.viewpagerindicator;
+package com.brantapps.viewpagerindicator.vertical;
+
+import static android.graphics.Paint.ANTI_ALIAS_FLAG;
+import static android.widget.LinearLayout.HORIZONTAL;
+import static android.widget.LinearLayout.VERTICAL;
+
+import com.brantapps.viewpagerindicator.R;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -33,9 +39,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-import static android.graphics.Paint.ANTI_ALIAS_FLAG;
-import static android.widget.LinearLayout.HORIZONTAL;
-import static android.widget.LinearLayout.VERTICAL;
 
 /**
  * Draws circles (one for each view). The current view position is filled and
@@ -48,8 +51,8 @@ public class CirclePageIndicator extends View implements PageIndicator {
     private final Paint mPaintPageFill = new Paint(ANTI_ALIAS_FLAG);
     private final Paint mPaintStroke = new Paint(ANTI_ALIAS_FLAG);
     private final Paint mPaintFill = new Paint(ANTI_ALIAS_FLAG);
-    private ViewPager mViewPager;
-    private ViewPager.OnPageChangeListener mListener;
+    private VerticalViewPager mViewPager;
+    private VerticalViewPager.OnPageChangeListener mListener;
     private int mCurrentPage;
     private int mSnapPage;
     private float mPageOffset;
@@ -72,6 +75,7 @@ public class CirclePageIndicator extends View implements PageIndicator {
         this(context, attrs, R.attr.vpiCirclePageIndicatorStyle);
     }
 
+    @SuppressWarnings("deprecation")
     public CirclePageIndicator(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         if (isInEditMode()) return;
@@ -362,7 +366,7 @@ public class CirclePageIndicator extends View implements PageIndicator {
     }
 
     @Override
-    public void setViewPager(ViewPager view) {
+    public void setViewPager(VerticalViewPager view) {
         if (mViewPager == view) {
             return;
         }
@@ -378,7 +382,7 @@ public class CirclePageIndicator extends View implements PageIndicator {
     }
 
     @Override
-    public void setViewPager(ViewPager view, int initialPosition) {
+    public void setViewPager(VerticalViewPager view, int initialPosition) {
         setViewPager(view);
         setCurrentItem(initialPosition);
     }
@@ -432,7 +436,7 @@ public class CirclePageIndicator extends View implements PageIndicator {
     }
 
     @Override
-    public void setOnPageChangeListener(ViewPager.OnPageChangeListener listener) {
+    public void setOnPageChangeListener(VerticalViewPager.OnPageChangeListener listener) {
         mListener = listener;
     }
 
@@ -539,7 +543,6 @@ public class CirclePageIndicator extends View implements PageIndicator {
             dest.writeInt(currentPage);
         }
 
-        @SuppressWarnings("UnusedDeclaration")
         public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
             @Override
             public SavedState createFromParcel(Parcel in) {
